@@ -1,0 +1,1 @@
+- Investigate AOP for metric instrumentation and collection.  Callbacks are intrusive.

@@ -1,0 +1,42 @@
+<h2>FiveRuns Dash Java API</h2>
+<p>
+  The Dash Java API provides basic metric support for Java applications.  It does not support traces
+  or exceptions as of this release.
+</p>
+<h3>Application Integration</h3>
+<p>
+  To use Dash in your application, you need to:
+  
+  <ul>
+    <li>Add Java code to your application which configures and starts Dash.</li>
+    <li>Add Dash and its dependencies to your application's classpath.</li>
+  </ul>
+</p>
+<h3>Configuring Dash</h3>
+<p>
+  Dash is configured via a simple Java API.  Import the core Dash classes:
+  
+  <pre>
+  import com.fiveruns.dash.*;
+  </pre>
+  
+  Create a list of metric recipes that you wish to monitor:
+  
+  <pre>
+  Recipe[] recipes = {
+      Recipe.getJvmRecipe(),
+  };
+  </pre>
+  
+  Pass in your application token and recipe listing to the <code>Plugin.start</code> method.
+
+  <pre>
+    Plugin.start("change-me-to-your-app-token", recipes);
+  </pre>
+  
+  This will spin off a thread which will regularly collect and send metrics to Dash.
+</p>
+<h3>Running Dash</h3>
+<p>
+  Dash has three runtime dependencies.  You will need to add the Dash jar along with Apache's commons-httpclient 3.1, commons-logging 1.0.4 and commons-codec 1.2 to your classpath.
+</p>

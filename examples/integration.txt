@@ -1,0 +1,20 @@
+/*
+ * Example code of how to integrate Dash metrics into your own application.
+ * You can create your own metrics for upload to the Dash system.
+ * See the javadoc for Recipe, IMetric and DefaultMetrics for a few examples.
+ */
+ 
+import com.fiveruns.dash.*;
+
+// Pull in the metric recipes you wish to collect.
+// The JVM recipe is shipped with the Dash plugin as a sample Recipe.
+Recipe[] recipes = { Recipe.getJvmRecipe() };
+
+// Spin off the Dash plugin thread, which will collect your metric values
+// and upload them to the Dash service once per minute.
+Plugin.start('your-app-token-here', recipes);
+
+
+// See DashFilter.java for a real world example of how to integrate
+// Dash into your web app as a Servlet Filter, in order to track
+// requests and total response time in your web application.

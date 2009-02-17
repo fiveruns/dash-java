@@ -18,7 +18,7 @@ public class Recipe {
     private String name;
     private IMetric[] metrics;
 
-    public Recipe(String n, String u, IMetric[] mets) {
+    public Recipe(String n, String u, IMetric... mets) {
         url = u;
         name = n;
         metrics = mets;

@@ -22,7 +22,7 @@ public final class Plugin {
         reporter = new Reporter(token, recipes);
     }
 
-    public static void start(String token, Recipe[] recipes) {
+    public static void start(String token, Recipe... recipes) {
     	if (singleton != null) {
     		return;
     	}

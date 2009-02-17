@@ -100,7 +100,7 @@ public class DashFilter implements Filter {
     }
     
     public static class Requests extends BaseMetric {
-        public String getName() { return "Requests"; }
+        public String getName() { return "requests"; }
 
         public IMetricCallback getCallback() {
             return new IMetricCallback() {
@@ -112,7 +112,7 @@ public class DashFilter implements Filter {
     }
 
     public static class ResponseTime extends BaseMetric {
-        public String getName() { return "Response Time"; }
+        public String getName() { return "response_time"; }
         public String getDataType() { return "time"; }
         public String getUnit() { return "sec"; }
 

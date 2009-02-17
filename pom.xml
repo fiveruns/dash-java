@@ -6,7 +6,7 @@
   <groupId>com.fiveruns.dash</groupId>
   <artifactId>dash-plugin</artifactId>
   <packaging>jar</packaging>
-  <version>0.8.1-SNAPSHOT</version>
+  <version>0.8.2</version>
   <name>FiveRuns Dash Plugin</name>
   <url>http://fiveruns.com</url>
 

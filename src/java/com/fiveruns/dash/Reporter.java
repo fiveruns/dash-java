@@ -122,7 +122,7 @@ public class Reporter {
         }
         // Add metric info payload
         parts.add(new FilePart("file", new ByteArrayPartSource("file", compress(toMetricInfoJson()))));
-        post.setRequestEntity(new MultipartRequestEntity(parts.toArray(new Part[0]), post.getParams()));
+        post.setRequestEntity(new MultipartRequestEntity(parts.toArray(new Part[parts.size()]), post.getParams()));
         
         try {
             int code = client.executeMethod(post);
@@ -206,7 +206,7 @@ public class Reporter {
             // Add metric payload
             byte[] json = new JSONArray(runtimeMetrics).toString().getBytes("UTF-8");
             parts.add(new FilePart("file", new ByteArrayPartSource("file", compress(json))));
-            post.setRequestEntity(new MultipartRequestEntity(parts.toArray(new Part[0]), post.getParams()));
+            post.setRequestEntity(new MultipartRequestEntity(parts.toArray(new Part[parts.size()]), post.getParams()));
 
             int code = client.executeMethod(post);
             String resp = post.getResponseBodyAsString();

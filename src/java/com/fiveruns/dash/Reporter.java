@@ -2,12 +2,14 @@ package com.fiveruns.dash;
 
 import org.apache.commons.logging.*;
 import java.util.*;
+import java.util.regex.*;
 import java.util.logging.*;
 import java.util.zip.*;
 import java.io.*;
 import java.net.*;
 import java.text.*;
 import java.text.NumberFormat;
+
 import com.fiveruns.json.*;
 
 import org.apache.commons.httpclient.*;
@@ -61,12 +63,14 @@ public class Reporter {
             JSONArray arr = new JSONArray();
             for (Recipe r : recipes) {
                 for (IMetric m : r.getMetrics()) {
+                    validate(m);
                     JSONObject obj = new JSONObject()
                         .put("recipe_name", r.getName())
                         .put("recipe_url", r.getUrl())
                         .put("name", m.getName())
                         .put("data_type", m.getDataType());
                     if (m.getUnit() != null) obj.put("unit", m.getUnit());
+                    if (m.getDescription() != null) obj.put("description", m.getDescription());
                     arr.put(obj);
                 }
             }
@@ -290,5 +294,21 @@ public class Reporter {
         byte[] rc = new byte[size];
         System.arraycopy(buff, 0, rc, 0, size);
         return rc;
+    }
+
+    public void validate(IMetric metric) {
+        String n = metric.getName();
+        if (n.length() > 32) {
+            throw new IllegalStateException("Name " + n + " is too long.  It is limited to 32 characters.");
+        }
+        if (n.length() < 3) {
+            throw new IllegalStateException("Name " + n + " is too short.  It must be at least 3 characters.");
+        }
+
+        Pattern p = Pattern.compile("\\A\\w+\\Z");
+        Matcher m = p.matcher(n);
+        if (!m.find()) {
+            throw new IllegalStateException("Name " + n + " can only contain letters, numbers and underscore.  Metrics should be named like 'free_memory', not 'Free Memory'");
+        }
     }
 }

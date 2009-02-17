@@ -16,6 +16,10 @@ public abstract class BaseMetric implements IMetric {
         return null;
     }
     
+    public String getDescription() {
+        return null;
+    }
+
     public abstract IMetricCallback getCallback();
 
     public NamespaceValue[] basicValue(double value) {

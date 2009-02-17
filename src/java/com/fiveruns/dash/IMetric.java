@@ -7,8 +7,19 @@ package com.fiveruns.dash;
  */
 public interface IMetric {
 
+    /**
+     * Name should be all lower-case and words separated by underscores, like C or Ruby variables.
+     * The name will be titleized when displayed in the UI, e.g. 'free_memory' => 'Free Memory'
+     * May only contain [A-Za-z0-9_] characters and be between 3 and 32 in length.
+     */
     String getName();
     
+    /**
+     * An optional human-readable description of this metric, if the titleized name does not look correct.
+     * Should still be reasonably short but may contain any characters.
+     */
+    String getDescription();
+
     /**
      * One of:
      * 'absolute' - a standard number.

@@ -13,7 +13,7 @@ class DefaultMetrics {
      */
     public static class GcTime extends BaseMetric {
         private long prev;
-        public String getName() { return "GC Time"; }
+        public String getName() { return "gc_time"; }
         public String getDataType() { return "time"; }
         public String getUnit() { return "sec"; }
 
@@ -33,7 +33,7 @@ class DefaultMetrics {
     }
 
     public static class ClassCount extends BaseMetric {
-        public String getName() { return "Class Count"; }
+        public String getName() { return "class_count"; }
 
         public IMetricCallback getCallback() {
             return new IMetricCallback() {
@@ -45,7 +45,7 @@ class DefaultMetrics {
     }
 
     public static class FreeMemory extends BaseMetric {
-        public String getName() { return "Free Memory"; }
+        public String getName() { return "free_memory"; }
         public String getUnit() { return "MB"; }
 
         public IMetricCallback getCallback() {
